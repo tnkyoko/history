@@ -1,37 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Timeline</title>
-    <!-- 链接 Timeline.js 的 CSS 文件 -->
+    <title>历史时间轴</title>
+    <!-- 引入Timeline CSS -->
     <link rel="stylesheet" href="timeline.css">
-    <!-- 链接自定义的样式文件 -->
+    <!-- 引入自定义样式 -->
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <!-- 用于显示时间轴的容器 -->
-    <div id="timeline-embed"></div>
 
-    <!-- 引入 jQuery 库 -->
-    <script src="jquery-3.7.1.min.js"></script>
-    <!-- 引入 Timeline.js 库 -->
-    <script src="timeline.js"></script>
-    <script>
-        // 页面加载完成后执行以下代码
-        $(document).ready(function () {
-            // 创建时间轴
-            createStoryJS({
-                type: 'timeline',
-                width: '100%',
-                height: '600px',
-                source: 'history-timeline.json',
-                embed_id: 'timeline-embed'
-            });
+<div id="timeline-embed"></div>
+
+<!-- 引入jQuery -->
+<script src="jquery-3.7.1.min.js"></script>
+<!-- 引入Timeline JS -->
+<script src="timeline.js"></script>
+
+<script>
+    // 当DOM加载完毕后，初始化时间轴
+    jQuery(document).ready(function($) {
+        createStoryJS({
+            type: 'timeline',
+            width: '100%',
+            height: '600px',
+            source: 'history-timeline.json',
+            embed_id: 'timeline-embed', // ID of the DIV you want to embed the timeline into
+            start_at_slide: 0,
+            start_zoom_adjust: '3',
+            hash_bookmark: true,
+            debug: false,
+            lang: 'zh-CN' // 语言设置为中文
         });
-    </script>
-</body>
+    });
+</script>
 
+</body>
 </html>
